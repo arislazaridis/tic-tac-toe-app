@@ -1,0 +1,13 @@
+/* Board Component Styles */
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
