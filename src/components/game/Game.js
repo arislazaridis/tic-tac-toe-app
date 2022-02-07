@@ -3,48 +3,11 @@ import Board from "../board/Board";
 import "./game.css";
 import GamePlayer from "./components/GamePlayer";
 import GameStatus from "./components/GameStatus";
-import calculateWinner from "./utils/calculateWinner";
-
-const initialState = {
-  player1: "",
-  player2: "",
-  squares: Array(9).fill(null),
-  xIsNext: true,
-  winner: null,
-};
+import useTicTacToeModel from "../../models/useTicTacToeModel";
 
 const Game = () => {
-  const [state, setState] = useState(initialState);
-
-  const makeMove = (squareIndex) => {
-    const { winner, player1, player2, squares, xIsNext } =
-      state || initialState;
-
-    if (winner || squares[squareIndex]) {
-      return;
-    }
-
-    if (!player1 || !player2) {
-      alert("Please give tha players names");
-      return;
-    }
-
-    const newSquares = squares.slice();
-
-    newSquares[squareIndex] = xIsNext ? "X" : "O";
-
-    const newWinner = calculateWinner(newSquares);
-    console.log(state);
-    setState({
-      ...state,
-      winner: newWinner,
-      squares: newSquares,
-      xIsNext: !xIsNext,
-    });
-  };
-
-  const gameData = state || initialState;
-  const { winner, xIsNext, player1, player2, squares } = gameData;
+  const { winner, player1, player2, xIsNext, state, setState, makeMove } =
+    useTicTacToeModel();
 
   return (
     <div className="game">
