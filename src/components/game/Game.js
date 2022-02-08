@@ -17,18 +17,21 @@ const Game = () => {
         player1={player1}
         player2={player2}
       />
+
       <div className="game-board">
         <Board
-          squares={state.squares} //pernaei ton pinaka me kena squares
+          squares={state.squares}
           onSquareClick={(squareIndex) => makeMove(squareIndex)}
         />
       </div>
+
       <div className="wrapper">
         <GamePlayer
           label="Player 1"
           player={player1}
           setPlayer={(e) => setState({ ...state, player1: e.target.value })}
         />
+
         <GamePlayer
           label="Player 2"
           player={player2}

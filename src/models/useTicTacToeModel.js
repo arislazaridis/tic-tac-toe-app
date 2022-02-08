@@ -12,6 +12,14 @@ const initialState = {
 const useTicTacToeModel = () => {
   const [state, setState] = useState(initialState);
 
+  const setPlayer1 = (player) => {
+    setState({ ...state, player1: player });
+  };
+
+  const setPlayer2 = (player) => {
+    setState({ ...state, player2: player });
+  };
+
   const makeMove = (squareIndex) => {
     const { winner, player1, player2, squares, xIsNext } =
       state || initialState;
@@ -40,6 +48,7 @@ const useTicTacToeModel = () => {
   };
 
   const gameData = state || initialState;
+
   const { winner, xIsNext, player1, player2, squares } = gameData;
 
   return {
@@ -51,6 +60,8 @@ const useTicTacToeModel = () => {
     makeMove,
     state,
     setState,
+    setPlayer1,
+    setPlayer2,
   };
 };
 
